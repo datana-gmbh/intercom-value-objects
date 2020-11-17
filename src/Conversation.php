@@ -1,0 +1,55 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Gansel\Intercom\Value;
+
+use Webmozart\Assert\Assert;
+
+/**
+ * @author Oskar Stark <oskarstark@googlemail.com>
+ */
+final class Conversation
+{
+    private const TYPE = 'conversation';
+
+    private array $value;
+
+    private function __construct(array $value)
+    {
+        Assert::keyExists($value, 'type');
+        Assert::same(self::TYPE, $value['type']);
+
+        $this->value = $value;
+    }
+
+    public static function fromResponse(\stdClass $response): self
+    {
+        return new self(UnstructuredArray::fromStdClass($response)->value());
+    }
+
+    public function id(): string
+    {
+        return $this->value['id'];
+    }
+
+    public function contactId(): string
+    {
+        if ('customer_initiated' === $this->value['source']['delivered_as']) {
+            return $this->value['source']['author']['id'];
+        }
+
+        if ('automated' === $this->value['source']['delivered_as']
+            && [] !== $this->value['contacts']['contacts']
+            && \array_key_exists(0, $this->value['contacts']['contacts'])
+            && 'contact' === $this->value['contacts']['contacts'][0]['type']
+        ) {
+            return $this->value['contacts']['contacts'][0]['id'];
+        }
+    }
+
+    public function toArray(): array
+    {
+        return $this->value;
+    }
+}
