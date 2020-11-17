@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Gansel\Intercom\Value;
 
-use App\Intercom\Domain\CanvasInterface;
+use Gansel\Intercom\Value\CanvasInterface;
 use Gansel\Intercom\Value\Canvas\Components;
 
 /**
