@@ -11,13 +11,13 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Gansel\Intercom\Value\Tests\Attributes;
+namespace Gansel\Intercom\Value\Tests\Common;
 
 use Ergebnis\Test\Util\Helper;
-use Gansel\Intercom\Value\Attributes;
+use Gansel\Intercom\Value\Common;
 use PHPUnit\Framework\TestCase;
 
-final class UserIdTest extends TestCase
+final class HashTest extends TestCase
 {
     use Helper;
 
@@ -26,7 +26,7 @@ final class UserIdTest extends TestCase
      */
     public function isFinal(): void
     {
-        self::assertClassIsFinal(Attributes\UserId::class);
+        self::assertClassIsFinal(Common\Hash::class);
     }
 
     /**
@@ -39,7 +39,7 @@ final class UserIdTest extends TestCase
     {
         $this->expectException(\InvalidArgumentException::class);
 
-        Attributes\UserId::fromString($value);
+        Common\Hash::fromString($value);
     }
 
     /**
@@ -47,13 +47,13 @@ final class UserIdTest extends TestCase
      */
     public function toStringReturnsValueFromFromString()
     {
-        $value = self::faker()->uuid;
+        $value = self::faker()->sha256;
 
-        $userId = Attributes\UserId::fromString($value);
+        $hash = Common\Hash::fromString($value);
 
         static::assertSame(
             $value,
-            $userId->toString()
+            $hash->toString()
         );
     }
 }
