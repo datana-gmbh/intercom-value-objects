@@ -44,24 +44,18 @@ jobs:
             matrix:
                 php-version:
                     - '7.4'
+                    - '8.0'
                 dependencies:
                     - 'lowest'
                     - 'highest'
                 allowed-to-fail: [false]
-                include:
-                    - php-version: '8.0'
-                      dependencies: 'lowest'
-                      allowed-to-fail: true
-                    - php-version: '8.0'
-                      dependencies: 'highest'
-                      allowed-to-fail: true
 
         steps:
             - name: "Checkout code"
               uses: actions/checkout@v2
 
             - name: Install PHP with extensions
-              uses: shivammathur/setup-php@v2
+              uses: shivammathur/setup-php@2.7.0
               with:
                   coverage: "none"
                   php-version: "${{ matrix.php-version }}"
