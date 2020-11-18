@@ -13,41 +13,34 @@ declare(strict_types=1);
 
 namespace Gansel\Intercom\Value\Attributes;
 
-use Webmozart\Assert\Assert;
+use Gansel\Intercom\Value\Common\Hash;
+use Gansel\Intercom\Value\Security;
 
 /**
  * @author Oskar Stark <oskarstark@googlemail.com>
  */
 final class UserHash
 {
-    private string $value;
+    private Hash $hash;
 
-    private function __construct(string $value)
+    private function __construct(Hash $hash)
     {
-        $value = trim($value);
-
-        Assert::stringNotEmpty($value);
-        Assert::notWhitespaceOnly($value);
-
-        $this->value = $value;
+        $this->hash = $hash;
     }
 
-    public static function forUserId(UserId $userId, string $secret): self
+    public static function forUserId(UserId $userId, Security\IdentityVerificationSecret $secret): self
     {
-        $secret = trim($secret);
-
-        Assert::stringNotEmpty($secret);
-        Assert::notWhitespaceOnly($secret);
-
-        return new self(hash_hmac(
+        $hash = Hash::fromString(hash_hmac(
             'sha256',
             $userId->toString(),
-            $secret
+            $secret->toString()
         ));
+
+        return new self($hash);
     }
 
     public function toString(): string
     {
-        return $this->value;
+        return $this->hash->toString();
     }
 }

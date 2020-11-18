@@ -14,9 +14,10 @@ declare(strict_types=1);
 namespace Gansel\Intercom\Value\Tests\Attributes;
 
 use Ergebnis\Test\Util\Helper;
-use Gansel\Intercom\Value\Attributes\UserHash;
-use Gansel\Intercom\Value\Attributes\UserId;
+use Gansel\Intercom\Value\Attributes;
+use Gansel\Intercom\Value\Security;
 use PHPUnit\Framework\TestCase;
+use function Symfony\Component\String\u;
 
 final class UserHashTest extends TestCase
 {
@@ -27,25 +28,7 @@ final class UserHashTest extends TestCase
      */
     public function isFinal(): void
     {
-        self::assertClassIsFinal(UserHash::class);
-    }
-
-    /**
-     * @test
-     *
-     * @dataProvider \Ergebnis\Test\Util\DataProvider\StringProvider::empty()
-     * @dataProvider \Ergebnis\Test\Util\DataProvider\StringProvider::blank()
-     */
-    public function throwsExcetionIfSecretIs(string $value)
-    {
-        $userId = UserId::fromString(self::faker()->uuid);
-
-        $this->expectException(\InvalidArgumentException::class);
-
-        UserHash::forUserId(
-            $userId,
-            $value
-        );
+        self::assertClassIsFinal(Attributes\UserHash::class);
     }
 
     /**
@@ -54,19 +37,20 @@ final class UserHashTest extends TestCase
     public function toStringReturnsValidHashForSecret()
     {
         $value = self::faker()->uuid;
-        $secret = self::faker()->sha256;
-
-        $userId = UserId::fromString($value);
+        $secret = u(self::faker()->sha256)->truncate(40)->toString();
 
         $expectedHash = hash_hmac(
             'sha256',
-            $userId->toString(),
+            $value,
             $secret
         );
 
+        $userId = Attributes\UserId::fromString($value);
+        $identityVerificationSecret = Security\IdentityVerificationSecret::fromString($secret);
+
         static::assertSame(
             $expectedHash,
-            UserHash::forUserId($userId, $secret)->toString()
+            Attributes\UserHash::forUserId($userId, $identityVerificationSecret)->toString()
         );
     }
 }
