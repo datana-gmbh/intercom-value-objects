@@ -1,4 +1,6 @@
-composer.lock
-/vendor
+/tools/vendor/
+/vendor/
+.php_cs.cache
 .phpunit.result.cache
+composer.lock
 phpunit.xml
