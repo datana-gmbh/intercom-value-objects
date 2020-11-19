@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-/*
+/**
  * This file is part of gansel-rechtsanwaelte/intercom-value-objects.
  *
  * (c) Gansel Rechtsanwälte
@@ -34,7 +34,7 @@ final class UserHashTest extends TestCase
     /**
      * @test
      */
-    public function toStringReturnsValidHashForSecret()
+    public function toStringReturnsValidHashForSecret(): void
     {
         $value = self::faker()->uuid;
         $secret = u(self::faker()->sha256)->truncate(40)->toString();
@@ -48,7 +48,7 @@ final class UserHashTest extends TestCase
         $userId = Attributes\UserId::fromString($value);
         $identityVerificationSecret = Security\IdentityVerificationSecret::fromString($secret);
 
-        static::assertSame(
+        self::assertSame(
             $expectedHash,
             Attributes\UserHash::forUserId($userId, $identityVerificationSecret)->toString()
         );
