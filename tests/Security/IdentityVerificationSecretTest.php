@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-/*
+/**
  * This file is part of gansel-rechtsanwaelte/intercom-value-objects.
  *
  * (c) Gansel Rechtsanwälte
@@ -36,7 +36,7 @@ final class IdentityVerificationSecretTest extends TestCase
      * @dataProvider \Ergebnis\Test\Util\DataProvider\StringProvider::empty()
      * @dataProvider \Ergebnis\Test\Util\DataProvider\StringProvider::blank()
      */
-    public function throwsExcetionIfValueIs(string $value)
+    public function throwsExcetionIfValueIs(string $value): void
     {
         $this->expectException(\InvalidArgumentException::class);
 
@@ -46,7 +46,7 @@ final class IdentityVerificationSecretTest extends TestCase
     /**
      * @test
      */
-    public function throwsExcetionIfValueIsNot40CharactersLong()
+    public function throwsExcetionIfValueIsNot40CharactersLong(): void
     {
         $value = u(self::faker()->sha256)->truncate(20)->toString();
 
@@ -59,13 +59,13 @@ final class IdentityVerificationSecretTest extends TestCase
     /**
      * @test
      */
-    public function toStringReturnsValueFromFromString()
+    public function toStringReturnsValueFromFromString(): void
     {
         $value = u(self::faker()->sha256)->truncate(40)->toString();
 
         $identiyVerificationSecret = Security\IdentityVerificationSecret::fromString($value);
 
-        static::assertSame(
+        self::assertSame(
             $value,
             $identiyVerificationSecret->toString()
         );
