@@ -34,7 +34,7 @@ jobs:
               run: composer install --no-interaction --no-progress --working-dir=tools
 
             - name: PHP-CS-Fixer
-              uses: docker://oskarstark/php-cs-fixer-ga:2.16.7
+              uses: docker://oskarstark/php-cs-fixer-ga:2.17.1
               with:
                   args: --diff --dry-run --verbose
 
