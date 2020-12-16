@@ -18,6 +18,9 @@ use Gansel\Intercom\Value\Security;
 use PHPUnit\Framework\TestCase;
 use function Symfony\Component\String\u;
 
+/**
+ * @internal
+ */
 final class IdentityVerificationSecretTest extends TestCase
 {
     use Helper;
@@ -33,8 +36,8 @@ final class IdentityVerificationSecretTest extends TestCase
     /**
      * @test
      *
-     * @dataProvider \Ergebnis\Test\Util\DataProvider\StringProvider::empty()
      * @dataProvider \Ergebnis\Test\Util\DataProvider\StringProvider::blank()
+     * @dataProvider \Ergebnis\Test\Util\DataProvider\StringProvider::empty()
      */
     public function throwsExcetionIfValueIs(string $value): void
     {

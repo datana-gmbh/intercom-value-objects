@@ -17,6 +17,9 @@ use Ergebnis\Test\Util\Helper;
 use Gansel\Intercom\Value\Attributes;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @internal
+ */
 final class UserIdTest extends TestCase
 {
     use Helper;
@@ -32,8 +35,8 @@ final class UserIdTest extends TestCase
     /**
      * @test
      *
-     * @dataProvider \Ergebnis\Test\Util\DataProvider\StringProvider::empty()
      * @dataProvider \Ergebnis\Test\Util\DataProvider\StringProvider::blank()
+     * @dataProvider \Ergebnis\Test\Util\DataProvider\StringProvider::empty()
      */
     public function throwsExcetionIfValueIs(string $value): void
     {

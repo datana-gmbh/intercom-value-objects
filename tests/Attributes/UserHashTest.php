@@ -19,6 +19,9 @@ use Gansel\Intercom\Value\Security;
 use PHPUnit\Framework\TestCase;
 use function Symfony\Component\String\u;
 
+/**
+ * @internal
+ */
 final class UserHashTest extends TestCase
 {
     use Helper;
