@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "deb6237bfa0b66e99e86bdfdcdcb4d20",
+    "content-hash": "d42ba8bc6dbf340e64ba9087cf3e34e5",
     "packages": [],
     "packages-dev": [
         {
@@ -410,21 +410,21 @@
         },
         {
             "name": "gansel-rechtsanwaelte/php-cs-fixer-config",
-            "version": "1.2.0",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/gansel-rechtsanwaelte/php-cs-fixer-config.git",
-                "reference": "8e72e0d67f43d24521db50ea2f898418b317bbf9"
+                "reference": "ee5c6afa1931314caf949362761609dbc9c6d03b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/gansel-rechtsanwaelte/php-cs-fixer-config/zipball/8e72e0d67f43d24521db50ea2f898418b317bbf9",
-                "reference": "8e72e0d67f43d24521db50ea2f898418b317bbf9",
+                "url": "https://api.github.com/repos/gansel-rechtsanwaelte/php-cs-fixer-config/zipball/ee5c6afa1931314caf949362761609dbc9c6d03b",
+                "reference": "ee5c6afa1931314caf949362761609dbc9c6d03b",
                 "shasum": ""
             },
             "require": {
                 "friendsofphp/php-cs-fixer": "~2.17.1",
-                "php": "^7.2"
+                "php": "^7.2 || ^8.0"
             },
             "require-dev": {
                 "composer/package-versions-deprecated": "1.11.99.1",
@@ -468,7 +468,7 @@
                 "issues": "https://github.com/gansel-rechtsanwaelte/php-cs-fixer-config/issues",
                 "source": "https://github.com/gansel-rechtsanwaelte/php-cs-fixer-config"
             },
-            "time": "2020-12-09T08:00:03+00:00"
+            "time": "2020-12-15T09:13:28+00:00"
         },
         {
             "name": "php-cs-fixer/diff",
@@ -2121,7 +2121,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.4"
+        "php": "^7.4 || ^8.0"
     },
     "platform-dev": [],
     "plugin-api-version": "2.0.0"
