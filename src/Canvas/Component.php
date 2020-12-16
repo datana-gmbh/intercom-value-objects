@@ -29,7 +29,7 @@ final class Component
         $this->value = $value;
     }
 
-    public static function Text(string $text, string $style = null): self
+    public static function Text(string $text, ?string $style = null): self
     {
         $value = [
             'text' => $text,
