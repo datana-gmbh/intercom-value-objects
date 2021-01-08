@@ -13,9 +13,9 @@ declare(strict_types=1);
 
 namespace Datana\Intercom\Value\Tests\Attributes;
 
-use Ergebnis\Test\Util\Helper;
 use Datana\Intercom\Value\Attributes;
 use Datana\Intercom\Value\Security;
+use Ergebnis\Test\Util\Helper;
 use PHPUnit\Framework\TestCase;
 use function Symfony\Component\String\u;
 
