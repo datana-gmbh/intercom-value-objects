@@ -4,9 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d42ba8bc6dbf340e64ba9087cf3e34e5",
-    "packages": [],
-    "packages-dev": [
+    "content-hash": "bee30c5cd036eb9b29d3146f744082b1",
+    "packages": [
         {
             "name": "composer/semver",
             "version": "3.2.4",
@@ -150,6 +149,72 @@
                 }
             ],
             "time": "2020-11-13T08:04:11+00:00"
+        },
+        {
+            "name": "datana-gmbh/php-cs-fixer-config",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/datana-gmbh/php-cs-fixer-config.git",
+                "reference": "bc10e47ea301ffb200da06037ea7fbd240ae007b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/datana-gmbh/php-cs-fixer-config/zipball/bc10e47ea301ffb200da06037ea7fbd240ae007b",
+                "reference": "bc10e47ea301ffb200da06037ea7fbd240ae007b",
+                "shasum": ""
+            },
+            "require": {
+                "friendsofphp/php-cs-fixer": "~2.17.3",
+                "php": "^7.2 || ^8.0"
+            },
+            "require-dev": {
+                "composer/package-versions-deprecated": "1.11.99.1",
+                "ergebnis/composer-normalize": "^2.13.2",
+                "ergebnis/license": "^1.1.0",
+                "ergebnis/phpstan-rules": "~0.15.3",
+                "ergebnis/test-util": "^1.4.0",
+                "infection/infection": "~0.15.3",
+                "phpstan/extension-installer": "^1.1.0",
+                "phpstan/phpstan": "~0.12.65",
+                "phpstan/phpstan-deprecation-rules": "~0.12.6",
+                "phpstan/phpstan-phpunit": "~0.12.17",
+                "phpstan/phpstan-strict-rules": "~0.12.7",
+                "phpunit/phpunit": "^8.5.13"
+            },
+            "type": "library",
+            "extra": {
+                "composer-normalize": {
+                    "indent-size": 2,
+                    "indent-style": "space"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Datana\\PhpCsFixer\\Config\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andreas Möller",
+                    "email": "am@localheinz.com"
+                },
+                {
+                    "name": "Oskar Stark",
+                    "email": "oskarstark@googlemail.com"
+                }
+            ],
+            "description": "Provides a configuration factory and multiple rule sets for friendsofphp/php-cs-fixer.",
+            "homepage": "https://github.com/datana-gmbh/php-cs-fixer-config",
+            "support": {
+                "issues": "https://github.com/datana-gmbh/php-cs-fixer-config/issues",
+                "source": "https://github.com/datana-gmbh/php-cs-fixer-config"
+            },
+            "time": "2021-01-07T12:18:43+00:00"
         },
         {
             "name": "doctrine/annotations",
@@ -409,68 +474,6 @@
                 }
             ],
             "time": "2020-12-24T11:14:44+00:00"
-        },
-        {
-            "name": "gansel-rechtsanwaelte/php-cs-fixer-config",
-            "version": "1.4.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/gansel-rechtsanwaelte/php-cs-fixer-config.git",
-                "reference": "1a520517e581d11a77fd8cb841b38829254ac577"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/gansel-rechtsanwaelte/php-cs-fixer-config/zipball/1a520517e581d11a77fd8cb841b38829254ac577",
-                "reference": "1a520517e581d11a77fd8cb841b38829254ac577",
-                "shasum": ""
-            },
-            "require": {
-                "friendsofphp/php-cs-fixer": "~2.17.3",
-                "php": "^7.2 || ^8.0"
-            },
-            "require-dev": {
-                "composer/package-versions-deprecated": "1.11.99.1",
-                "ergebnis/composer-normalize": "^2.13.2",
-                "ergebnis/license": "^1.1.0",
-                "ergebnis/phpstan-rules": "~0.15.3",
-                "ergebnis/test-util": "^1.4.0",
-                "infection/infection": "~0.15.3",
-                "phpstan/extension-installer": "^1.1.0",
-                "phpstan/phpstan": "~0.12.65",
-                "phpstan/phpstan-deprecation-rules": "~0.12.6",
-                "phpstan/phpstan-phpunit": "~0.12.17",
-                "phpstan/phpstan-strict-rules": "~0.12.7",
-                "phpunit/phpunit": "^8.5.13"
-            },
-            "type": "library",
-            "extra": {
-                "composer-normalize": {
-                    "indent-size": 2,
-                    "indent-style": "space"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Gansel\\PhpCsFixer\\Config\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Andreas Möller",
-                    "email": "am@localheinz.com"
-                }
-            ],
-            "description": "Provides a configuration factory and multiple rule sets for friendsofphp/php-cs-fixer.",
-            "homepage": "https://github.com/gansel-rechtsanwaelte/php-cs-fixer-config",
-            "support": {
-                "issues": "https://github.com/gansel-rechtsanwaelte/php-cs-fixer-config/issues",
-                "source": "https://github.com/gansel-rechtsanwaelte/php-cs-fixer-config"
-            },
-            "time": "2021-01-07T07:25:21+00:00"
         },
         {
             "name": "php-cs-fixer/diff",
@@ -2117,13 +2120,14 @@
             "time": "2020-12-05T07:33:16+00:00"
         }
     ],
+    "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.4 || ^8.0"
+        "php": ">=7.4"
     },
     "platform-dev": [],
     "plugin-api-version": "2.0.0"

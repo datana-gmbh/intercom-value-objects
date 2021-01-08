@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-use Gansel\PhpCsFixer;
+use Datana\PhpCsFixer;
 
 require_once __DIR__ . '/tools/vendor/autoload.php';
 
 $header = <<<'HEADER'
-This file is part of gansel-rechtsanwaelte/intercom-value-objects.
+This file is part of datana-gmbh/intercom-value-objects.
 
-(c) Gansel Rechtsanwälte
+(c) Datana GmbH
 
 For the full copyright and license information, please view the LICENSE
 file that was distributed with this source code.
