@@ -117,16 +117,16 @@ jobs:
 
         steps:
             -
-                name: "Request review from @gansel-bot"
+                name: "Request review from @datana-bot"
                 uses: "actions/github-script@v3"
                 with:
-                    github-token: "${{ secrets.GANSEL_BOT_TOKEN }}"
+                    github-token: "${{ secrets.DATANA_BOT_TOKEN }}"
                     script: |
                         const pullRequest = context.payload.pull_request
                         const repository = context.repo
 
                         const reviewers = [
-                            "gansel-bot",
+                            "datana-bot",
                         ]
 
                         await github.pulls.requestReviewers({
@@ -137,16 +137,16 @@ jobs:
                         })
 
             -
-                name: "Assign @gansel-bot"
+                name: "Assign @datana-bot"
                 uses: "actions/github-script@v3"
                 with:
-                    github-token: "${{ secrets.GANSEL_BOT_TOKEN }}"
+                    github-token: "${{ secrets.DATANA_BOT_TOKEN }}"
                     script: |
                         const pullRequest = context.payload.pull_request
                         const repository = context.repo
 
                         const reviewers = [
-                            "gansel-bot",
+                            "datana-bot",
                         ]
 
                         await github.issues.addAssignees({
@@ -159,9 +159,9 @@ jobs:
             -
                 name: "Approve pull request"
                 uses: "actions/github-script@v3"
-                if: "github.actor != 'gansel-bot'"
+                if: "github.actor != 'datana-bot'"
                 with:
-                    github-token: "${{ secrets.GANSEL_BOT_TOKEN }}"
+                    github-token: "${{ secrets.DATANA_BOT_TOKEN }}"
                     script: |
                         const pullRequest = context.payload.pull_request
                         const repository = context.repo
@@ -177,7 +177,7 @@ jobs:
                 name: "Merge pull request"
                 uses: "actions/github-script@v3"
                 with:
-                    github-token: "${{ secrets.GANSEL_BOT_TOKEN }}"
+                    github-token: "${{ secrets.DATANA_BOT_TOKEN }}"
                     script: |
                         const pullRequest = context.payload.pull_request
                         const repository = context.repo

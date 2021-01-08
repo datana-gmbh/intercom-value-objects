@@ -3,18 +3,18 @@
 declare(strict_types=1);
 
 /**
- * This file is part of gansel-rechtsanwaelte/intercom-value-objects.
+ * This file is part of datana-gmbh/intercom-value-objects.
  *
- * (c) Gansel Rechtsanwälte
+ * (c) Datana GmbH
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Gansel\Intercom\Value\Tests\Security;
+namespace Datana\Intercom\Value\Tests\Security;
 
+use Datana\Intercom\Value\Security;
 use Ergebnis\Test\Util\Helper;
-use Gansel\Intercom\Value\Security;
 use PHPUnit\Framework\TestCase;
 use function Symfony\Component\String\u;
 

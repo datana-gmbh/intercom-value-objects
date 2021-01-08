@@ -1,8 +1,8 @@
 {
     "require-dev": {
-        "gansel-rechtsanwaelte/php-cs-fixer-config": "^1.2.0"
+        "datana-gmbh/php-cs-fixer-config": "^1.0.0"
     },
     "require": {
-        "php": "^7.4 || ^8.0"
+        "php": ">=7.4"
     }
 }

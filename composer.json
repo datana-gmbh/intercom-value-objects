@@ -1,5 +1,5 @@
 {
-    "name": "gansel-rechtsanwaelte/intercom-value-objects",
+    "name": "datana-gmbh/intercom-value-objects",
     "type": "library",
     "description": "A set of value objects which can be used with intercom/intercom-php",
     "license": "MIT",
@@ -26,12 +26,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Gansel\\Intercom\\Value\\": "src/"
+            "Datana\\Intercom\\Value\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Gansel\\Intercom\\Value\\Tests\\": "tests/"
+            "Datana\\Intercom\\Value\\Tests\\": "tests/"
         }
     }
 }
