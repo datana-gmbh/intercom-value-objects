@@ -17,9 +17,6 @@ use Datana\Intercom\Value\Common;
 use Ergebnis\Test\Util\Helper;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @internal
- */
 final class HashTest extends TestCase
 {
     use Helper;

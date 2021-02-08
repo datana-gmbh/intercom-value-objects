@@ -18,9 +18,6 @@ use Ergebnis\Test\Util\Helper;
 use PHPUnit\Framework\TestCase;
 use function Symfony\Component\String\u;
 
-/**
- * @internal
- */
 final class IdentityVerificationSecretTest extends TestCase
 {
     use Helper;

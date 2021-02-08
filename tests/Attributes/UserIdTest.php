@@ -17,9 +17,6 @@ use Datana\Intercom\Value\Attributes;
 use Ergebnis\Test\Util\Helper;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @internal
- */
 final class UserIdTest extends TestCase
 {
     use Helper;
