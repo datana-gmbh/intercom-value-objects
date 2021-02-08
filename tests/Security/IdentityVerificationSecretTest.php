@@ -66,11 +66,11 @@ final class IdentityVerificationSecretTest extends TestCase
     {
         $value = u(self::faker()->sha256)->truncate(40)->toString();
 
-        $identiyVerificationSecret = Security\IdentityVerificationSecret::fromString($value);
+        $identityVerificationSecret = Security\IdentityVerificationSecret::fromString($value);
 
         self::assertSame(
             $value,
-            $identiyVerificationSecret->toString()
+            $identityVerificationSecret->toString()
         );
     }
 }
