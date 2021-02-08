@@ -13,6 +13,8 @@ declare(strict_types=1);
 
 namespace Datana\Intercom\Value;
 
+use Datana\Intercom\Value\CustomAttributes\Status;
+
 /**
  * @author Oskar Stark <oskarstark@googlemail.com>
  */
@@ -32,10 +34,23 @@ final class CustomAttributes
 
     public function Aktenzeichen(): ?string
     {
-        if (\array_key_exists('Aktenzeichen', $this->value)
-            && '' !== trim($this->value['Aktenzeichen'])
-        ) {
-            return trim($this->value['Aktenzeichen']);
+        return $this->getTrimmedKey('Aktenzeichen');
+    }
+
+    public function Venture(): ?string
+    {
+        return $this->getTrimmedKey('Venture');
+    }
+
+    public function Produkt(): ?string
+    {
+        return $this->getTrimmedKey('Produkt');
+    }
+
+    public function Status(): ?Status
+    {
+        if (null !== $value = $this->getTrimmedKey('Status')) {
+            return Status::fromString($value);
         }
 
         return null;
@@ -44,5 +59,16 @@ final class CustomAttributes
     public function toArray(): array
     {
         return $this->value;
+    }
+
+    private function getTrimmedKey(string $key): ?string
+    {
+        if (\array_key_exists($key, $this->value)
+            && '' !== trim($this->value[$key])
+        ) {
+            return trim($this->value[$key]);
+        }
+
+        return null;
     }
 }
