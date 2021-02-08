@@ -18,7 +18,7 @@ use Webmozart\Assert\Assert;
 /**
  * @author Oskar Stark <oskarstark@googlemail.com>
  */
-final class WorkspaceId
+final class WorkspaceAppId
 {
     private string $value;
 

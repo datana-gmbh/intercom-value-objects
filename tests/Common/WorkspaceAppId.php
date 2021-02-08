@@ -20,7 +20,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * @internal
  */
-final class WorkspaceId extends TestCase
+final class WorkspaceAppId extends TestCase
 {
     use Helper;
 
@@ -29,7 +29,7 @@ final class WorkspaceId extends TestCase
      */
     public function isFinal(): void
     {
-        self::assertClassIsFinal(Common\WorkspaceId::class);
+        self::assertClassIsFinal(Common\WorkspaceAppId::class);
     }
 
     /**
@@ -42,7 +42,7 @@ final class WorkspaceId extends TestCase
     {
         $this->expectException(\InvalidArgumentException::class);
 
-        Common\WorkspaceId::fromString($value);
+        Common\WorkspaceAppId::fromString($value);
     }
 
     /**
@@ -52,7 +52,7 @@ final class WorkspaceId extends TestCase
     {
         $this->expectException(\InvalidArgumentException::class);
 
-        Common\WorkspaceId::fromString('1111111');
+        Common\WorkspaceAppId::fromString('1111111');
     }
 
     /**
@@ -62,7 +62,7 @@ final class WorkspaceId extends TestCase
     {
         $this->expectException(\InvalidArgumentException::class);
 
-        Common\WorkspaceId::fromString('111111111');
+        Common\WorkspaceAppId::fromString('111111111');
     }
 
     /**
@@ -72,7 +72,7 @@ final class WorkspaceId extends TestCase
     {
         $value = 'nwrk724c';
 
-        $hash = Common\WorkspaceId::fromString($value);
+        $hash = Common\WorkspaceAppId::fromString($value);
 
         self::assertSame(
             $value,
