@@ -11,16 +11,16 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Datana\Intercom\Value\Tests\Common;
+namespace Datana\Intercom\Value\Tests\Workspace;
 
-use Datana\Intercom\Value\Common;
+use Datana\Intercom\Value\Workspace;
 use Ergebnis\Test\Util\Helper;
 use PHPUnit\Framework\TestCase;
 
 /**
  * @internal
  */
-final class WorkspaceAppId extends TestCase
+final class AppId extends TestCase
 {
     use Helper;
 
@@ -29,7 +29,7 @@ final class WorkspaceAppId extends TestCase
      */
     public function isFinal(): void
     {
-        self::assertClassIsFinal(Common\WorkspaceAppId::class);
+        self::assertClassIsFinal(Workspace\AppId::class);
     }
 
     /**
@@ -42,7 +42,7 @@ final class WorkspaceAppId extends TestCase
     {
         $this->expectException(\InvalidArgumentException::class);
 
-        Common\WorkspaceAppId::fromString($value);
+        Workspace\AppId::fromString($value);
     }
 
     /**
@@ -52,7 +52,7 @@ final class WorkspaceAppId extends TestCase
     {
         $this->expectException(\InvalidArgumentException::class);
 
-        Common\WorkspaceAppId::fromString('1111111');
+        Workspace\AppId::fromString('1111111');
     }
 
     /**
@@ -62,7 +62,7 @@ final class WorkspaceAppId extends TestCase
     {
         $this->expectException(\InvalidArgumentException::class);
 
-        Common\WorkspaceAppId::fromString('111111111');
+        Workspace\AppId::fromString('111111111');
     }
 
     /**
@@ -72,7 +72,7 @@ final class WorkspaceAppId extends TestCase
     {
         $value = 'nwrk724c';
 
-        $hash = Common\WorkspaceAppId::fromString($value);
+        $hash = Workspace\AppId::fromString($value);
 
         self::assertSame(
             $value,

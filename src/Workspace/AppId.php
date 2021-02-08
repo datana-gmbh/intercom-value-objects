@@ -11,14 +11,14 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Datana\Intercom\Value\Common;
+namespace Datana\Intercom\Value\Workspace;
 
 use Webmozart\Assert\Assert;
 
 /**
  * @author Oskar Stark <oskarstark@googlemail.com>
  */
-final class WorkspaceAppId
+final class AppId
 {
     private string $value;
 
