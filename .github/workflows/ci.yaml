@@ -2,7 +2,7 @@ on:
     push:
         branches:
             - master
-    pull_request:
+    pull_request: ~
 
 name: CI
 
@@ -33,10 +33,8 @@ jobs:
             - name: Composer install
               run: composer install --no-interaction --no-progress --working-dir=tools
 
-            - name: PHP-CS-Fixer
-              uses: docker://oskarstark/php-cs-fixer-ga:2.17.1
-              with:
-                  args: --diff --dry-run --verbose
+            - name: "Run friendsofphp/php-cs-fixer"
+              run: "vendor/bin/php-cs-fixer fix --diff --diff-format=udiff --verbose"
 
     composer-normalize:
         name: composer-normalize
@@ -89,102 +87,3 @@ jobs:
 
             - name: Run tests
               run: vendor/bin/phpunit -v
-
-    auto-merge:
-        name: "Auto-Merge"
-
-        needs:
-            - "php-cs-fixer"
-            - "composer-normalize"
-            - "tests"
-
-        runs-on: "ubuntu-latest"
-
-        if: >
-            github.event_name == 'pull_request' &&
-            github.event.pull_request.draft == false &&
-            (
-                github.event.action == 'opened' ||
-                github.event.action == 'reopened' ||
-                github.event.action == 'synchronize'
-            ) &&
-            (
-                (
-                    github.actor == 'dependabot[bot]' && startsWith(github.event.pull_request.title, 'github-actions(deps)')
-                ) ||
-                contains(github.event.pull_request.labels.*.name, 'merge')
-            )
-
-        steps:
-            -
-                name: "Request review from @datana-bot"
-                uses: "actions/github-script@v3"
-                with:
-                    github-token: "${{ secrets.DATANA_BOT_TOKEN }}"
-                    script: |
-                        const pullRequest = context.payload.pull_request
-                        const repository = context.repo
-
-                        const reviewers = [
-                            "datana-bot",
-                        ]
-
-                        await github.pulls.requestReviewers({
-                            owner: repository.owner,
-                            pull_number: pullRequest.number,
-                            repo: repository.repo,
-                            reviewers: reviewers,
-                        })
-
-            -
-                name: "Assign @datana-bot"
-                uses: "actions/github-script@v3"
-                with:
-                    github-token: "${{ secrets.DATANA_BOT_TOKEN }}"
-                    script: |
-                        const pullRequest = context.payload.pull_request
-                        const repository = context.repo
-
-                        const reviewers = [
-                            "datana-bot",
-                        ]
-
-                        await github.issues.addAssignees({
-                            assignees: reviewers,
-                            issue_number: pullRequest.number,
-                            owner: repository.owner,
-                            repo: repository.repo,
-                        })
-
-            -
-                name: "Approve pull request"
-                uses: "actions/github-script@v3"
-                if: "github.actor != 'datana-bot'"
-                with:
-                    github-token: "${{ secrets.DATANA_BOT_TOKEN }}"
-                    script: |
-                        const pullRequest = context.payload.pull_request
-                        const repository = context.repo
-
-                        await github.pulls.createReview({
-                            event: "APPROVE",
-                            owner: repository.owner,
-                            pull_number: pullRequest.number,
-                            repo: repository.repo,
-                        })
-
-            -
-                name: "Merge pull request"
-                uses: "actions/github-script@v3"
-                with:
-                    github-token: "${{ secrets.DATANA_BOT_TOKEN }}"
-                    script: |
-                        const pullRequest = context.payload.pull_request
-                        const repository = context.repo
-
-                        await github.pulls.merge({
-                            merge_method: "rebase",
-                            owner: repository.owner,
-                            pull_number: pullRequest.number,
-                            repo: repository.repo,
-                        })
