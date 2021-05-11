@@ -11,14 +11,11 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Datana\Intercom\Value\HealthCheck;
+namespace Datana\Intercom\Value\CustomAttributes;
 
 use OskarStark\Value\TrimmedNonEmptyString;
 
-/**
- * @author Oskar Stark <oskarstark@googlemail.com>
- */
-final class State
+final class PlumbleId
 {
     private string $value;
 
@@ -27,19 +24,9 @@ final class State
         $this->value = TrimmedNonEmptyString::fromString($value)->toString();
     }
 
-    public static function healthy(): self
+    public static function fromString(string $value): self
     {
-        return new self('OK');
-    }
-
-    public static function unhealthy(): self
-    {
-        return new self('UNHEALTHY');
-    }
-
-    public static function unknown(): self
-    {
-        return new self('UNKNOWN');
+        return new self($value);
     }
 
     public function toString(): string

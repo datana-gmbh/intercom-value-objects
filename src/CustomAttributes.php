@@ -13,6 +13,8 @@ declare(strict_types=1);
 
 namespace Datana\Intercom\Value;
 
+use Datana\Intercom\Value\CustomAttributes\Anrede;
+use Datana\Intercom\Value\CustomAttributes\PlumbleId;
 use Datana\Intercom\Value\CustomAttributes\Status;
 
 /**
@@ -37,6 +39,20 @@ final class CustomAttributes
         return $this->getTrimmedKey('Aktenzeichen');
     }
 
+    public function Anrede(): ?Anrede
+    {
+        if (null !== $value = $this->getTrimmedKey('Anrede')) {
+            return Anrede::fromString($value);
+        }
+
+        return null;
+    }
+
+    public function Titel(): ?string
+    {
+        return $this->getTrimmedKey('Titel');
+    }
+
     public function Venture(): ?string
     {
         return $this->getTrimmedKey('Venture');
@@ -45,6 +61,15 @@ final class CustomAttributes
     public function Produkt(): ?string
     {
         return $this->getTrimmedKey('Produkt');
+    }
+
+    public function PlumbleId(): ?PlumbleId
+    {
+        if (null !== $value = $this->getTrimmedKey('PlumbleId')) {
+            return PlumbleId::fromString($value);
+        }
+
+        return null;
     }
 
     public function Status(): ?Status
