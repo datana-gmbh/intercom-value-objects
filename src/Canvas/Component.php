@@ -55,6 +55,15 @@ final class Component
         ]);
     }
 
+    public static function Link(string $url, string $label): self
+    {
+        return new self([
+            'type' => 'text',
+            'text' => sprintf('[%s](%s)', $label, $url),
+            'align' => 'center'
+        ]);
+    }
+
     public function toArray(): array
     {
         return $this->value;
