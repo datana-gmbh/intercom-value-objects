@@ -24,17 +24,22 @@ final class Conversation
 
     private array $value;
 
-    private function __construct(array $value)
+    private function __construct(array $values)
     {
-        Assert::keyExists($value, 'type');
-        Assert::same(self::TYPE, $value['type']);
+        Assert::keyExists($values, 'type');
+        Assert::same(self::TYPE, $values['type']);
 
-        $this->value = $value;
+        $this->value = $values;
     }
 
     public static function fromResponse(\stdClass $response): self
     {
         return new self(UnstructuredArray::fromStdClass($response)->value());
+    }
+
+    public static function fromArray(array $values): self
+    {
+        return new self($values);
     }
 
     public function id(): string
