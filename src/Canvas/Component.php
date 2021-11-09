@@ -60,7 +60,7 @@ final class Component
         return new self([
             'type' => 'text',
             'text' => sprintf('[%s](%s)', $label, $url),
-            'align' => 'center'
+            'align' => 'center',
         ]);
     }
 
