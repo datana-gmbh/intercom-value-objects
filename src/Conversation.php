@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Datana\Intercom\Value;
 
+use Safe\DateTimeImmutable;
 use Webmozart\Assert\Assert;
 
 /**
@@ -22,14 +23,30 @@ final class Conversation
 {
     private const TYPE = 'conversation';
 
-    private array $value;
+    /**
+     * @var array<mixed>
+     */
+    private array $values;
+    private string $id;
+    private DateTimeImmutable $createdAt;
 
+    /**
+     * @param array<mixed> $values
+     */
     private function __construct(array $values)
     {
+        $this->values = $values;
+
         Assert::keyExists($values, 'type');
         Assert::same(self::TYPE, $values['type']);
 
-        $this->value = $values;
+        Assert::keyExists($values, 'id');
+        Assert::stringNotEmpty($values, 'id');
+        $this->id = $values['id'];
+
+        Assert::keyExists($values, 'created_at');
+        Assert::integer($values['created_at']);
+        $this->createdAt = DateTimeImmutable::createFromFormat('u', $values['created_at']);
     }
 
     public static function fromResponse(\stdClass $response): self
@@ -37,6 +54,9 @@ final class Conversation
         return new self(UnstructuredArray::fromStdClass($response)->value());
     }
 
+    /**
+     * @param array<mixed> $values
+     */
     public static function fromArray(array $values): self
     {
         return new self($values);
@@ -44,26 +64,34 @@ final class Conversation
 
     public function id(): string
     {
-        return $this->value['id'];
+        return $this->id;
+    }
+
+    public function createdAt(): DateTimeImmutable
+    {
+        return $this->createdAt;
     }
 
     public function contactId(): string
     {
-        if ('customer_initiated' === $this->value['source']['delivered_as']) {
-            return $this->value['source']['author']['id'];
+        if ('customer_initiated' === $this->values['source']['delivered_as']) {
+            return $this->values['source']['author']['id'];
         }
 
-        if ('automated' === $this->value['source']['delivered_as']
-            && [] !== $this->value['contacts']['contacts']
-            && \array_key_exists(0, $this->value['contacts']['contacts'])
-            && 'contact' === $this->value['contacts']['contacts'][0]['type']
+        if ('automated' === $this->values['source']['delivered_as']
+            && [] !== $this->values['contacts']['contacts']
+            && \array_key_exists(0, $this->values['contacts']['contacts'])
+            && 'contact' === $this->values['contacts']['contacts'][0]['type']
         ) {
-            return $this->value['contacts']['contacts'][0]['id'];
+            return $this->values['contacts']['contacts'][0]['id'];
         }
     }
 
+    /**
+     * @return array<mixed>
+     */
     public function toArray(): array
     {
-        return $this->value;
+        return $this->values;
     }
 }

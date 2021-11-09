@@ -22,15 +22,32 @@ final class Contact
 {
     private const TYPE = 'contact';
 
-    private array $value;
+    /**
+     * @var array<mixed>
+     */
+    private array $values;
+    private string $id;
+    private string $externalId;
     private CustomAttributes $customAttributes;
 
+    /**
+     * @param array<mixed> $values
+     */
     private function __construct(array $values)
     {
+        $this->values = $values;
+
         Assert::keyExists($values, 'type');
         Assert::same(self::TYPE, $values['type']);
 
-        $this->value = $values;
+        Assert::keyExists($values, 'id');
+        Assert::stringNotEmpty($values, 'id');
+        $this->id = $values['id'];
+
+        Assert::keyExists($values, 'external_id');
+        Assert::stringNotEmpty($values, 'external_id');
+        $this->externalId = $values['external_id'];
+
         $this->customAttributes = CustomAttributes::fromArray($values['custom_attributes']);
     }
 
@@ -39,6 +56,9 @@ final class Contact
         return new self(UnstructuredArray::fromStdClass($response)->value());
     }
 
+    /**
+     * @param array<mixed> $values
+     */
     public static function fromArray(array $values): self
     {
         return new self($values);
@@ -46,12 +66,12 @@ final class Contact
 
     public function id(): string
     {
-        return $this->value['id'];
+        return $this->id;
     }
 
     public function externalId(): string
     {
-        return $this->value['external_id'];
+        return $this->externalId;
     }
 
     public function customAttributes(): CustomAttributes
@@ -59,8 +79,11 @@ final class Contact
         return $this->customAttributes;
     }
 
+    /**
+     * @return array<mixed>
+     */
     public function toArray(): array
     {
-        return $this->value;
+        return $this->values;
     }
 }
