@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Datana\Intercom\Value;
 
+use OskarStark\Value\TrimmedNonEmptyString;
 use Safe\DateTimeImmutable;
 use Webmozart\Assert\Assert;
 
@@ -41,8 +42,7 @@ final class Conversation
         Assert::same(self::TYPE, $values['type']);
 
         Assert::keyExists($values, 'id');
-        Assert::stringNotEmpty($values, 'id');
-        $this->id = $values['id'];
+        $this->id = TrimmedNonEmptyString::fromString($values['id'])->toString();
 
         Assert::keyExists($values, 'created_at');
         Assert::integer($values['created_at']);
