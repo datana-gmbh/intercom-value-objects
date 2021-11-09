@@ -25,18 +25,23 @@ final class Contact
     private array $value;
     private CustomAttributes $customAttributes;
 
-    private function __construct(array $value)
+    private function __construct(array $values)
     {
-        Assert::keyExists($value, 'type');
-        Assert::same(self::TYPE, $value['type']);
+        Assert::keyExists($values, 'type');
+        Assert::same(self::TYPE, $values['type']);
 
-        $this->value = $value;
-        $this->customAttributes = CustomAttributes::fromArray($value['custom_attributes']);
+        $this->value = $values;
+        $this->customAttributes = CustomAttributes::fromArray($values['custom_attributes']);
     }
 
     public static function fromResponse(\stdClass $response): self
     {
         return new self(UnstructuredArray::fromStdClass($response)->value());
+    }
+
+    public static function fromArray(array $values): self
+    {
+        return new self($values);
     }
 
     public function id(): string
