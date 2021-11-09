@@ -46,7 +46,7 @@ final class Conversation
 
         Assert::keyExists($values, 'created_at');
         Assert::integer($values['created_at']);
-        $this->createdAt = DateTimeImmutable::createFromFormat('u', $values['created_at']);
+        $this->createdAt = new DateTimeImmutable(\Safe\date('Y-m-d H:i:s', $values['created_at']));
     }
 
     public static function fromResponse(\stdClass $response): self
