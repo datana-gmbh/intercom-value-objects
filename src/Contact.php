@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Datana\Intercom\Value;
 
+use OskarStark\Value\TrimmedNonEmptyString;
 use Webmozart\Assert\Assert;
 
 /**
@@ -41,12 +42,10 @@ final class Contact
         Assert::same(self::TYPE, $values['type']);
 
         Assert::keyExists($values, 'id');
-        Assert::stringNotEmpty($values, 'id');
-        $this->id = $values['id'];
+        $this->id = TrimmedNonEmptyString::fromString($values['id'])->toString();
 
         Assert::keyExists($values, 'external_id');
-        Assert::stringNotEmpty($values, 'external_id');
-        $this->externalId = $values['external_id'];
+        $this->externalId = TrimmedNonEmptyString::fromString($values['external_id'])->toString();
 
         $this->customAttributes = CustomAttributes::fromArray($values['custom_attributes']);
     }
