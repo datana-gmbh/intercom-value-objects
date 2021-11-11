@@ -15,7 +15,6 @@ namespace Datana\Intercom\Value;
 
 use Datana\Intercom\Value\Helper\DateTimeHelper;
 use OskarStark\Value\TrimmedNonEmptyString;
-use Safe\DateTimeImmutable;
 use Webmozart\Assert\Assert;
 
 /**
@@ -30,7 +29,7 @@ final class Conversation
      */
     private array $values;
     private string $id;
-    private DateTimeImmutable $createdAt;
+    private \DateTimeInterface $createdAt;
 
     /**
      * @param array<mixed> $values
@@ -47,7 +46,7 @@ final class Conversation
 
         Assert::keyExists($values, 'created_at');
         Assert::integer($values['created_at']);
-        $this->createdAt = DateTimeHelper::createDateTimeImmutableFromUnixTimestamp($values['created_at']);
+        $this->createdAt = DateTimeHelper::createDateTimeFromUnixTimestamp($values['created_at']);
     }
 
     public static function fromResponse(\stdClass $response): self
@@ -68,7 +67,7 @@ final class Conversation
         return $this->id;
     }
 
-    public function createdAt(): DateTimeImmutable
+    public function createdAt(): \DateTimeInterface
     {
         return $this->createdAt;
     }

@@ -13,19 +13,16 @@ declare(strict_types=1);
 
 namespace Datana\Intercom\Value\Helper;
 
-use OskarStark\Value\TrimmedNonEmptyString;
-use Safe\DateTimeImmutable;
-
 /**
  * @author Oskar Stark <oskarstark@googlemail.com>
  */
 final class DateTimeHelper
 {
-    public static function createDateTimeImmutableFromUnixTimestamp(int $timestamp): DateTimeImmutable
+    public static function createDateTimeFromUnixTimestamp(int $timestamp): \DateTime
     {
-        return new DateTimeImmutable(
-            \Safe\date('Y-m-d H:i:s', $timestamp),
-            new \DateTimeZone('Europe/Berlin')
-        );
+        $dateTime = new \DateTime('@'.$timestamp);
+        $dateTime->setTimezone(new \DateTimeZone('Europe/Berlin'));
+
+        return $dateTime;
     }
 }
