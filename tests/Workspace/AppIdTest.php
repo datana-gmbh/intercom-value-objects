@@ -17,7 +17,7 @@ use Datana\Intercom\Value\Workspace;
 use Ergebnis\Test\Util\Helper;
 use PHPUnit\Framework\TestCase;
 
-final class AppId extends TestCase
+final class AppIdTest extends TestCase
 {
     use Helper;
 
