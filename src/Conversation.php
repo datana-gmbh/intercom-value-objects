@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Datana\Intercom\Value;
 
+use Datana\Intercom\Value\Helper\DateTimeHelper;
 use OskarStark\Value\TrimmedNonEmptyString;
 use Safe\DateTimeImmutable;
 use Webmozart\Assert\Assert;
@@ -46,7 +47,7 @@ final class Conversation
 
         Assert::keyExists($values, 'created_at');
         Assert::integer($values['created_at']);
-        $this->createdAt = new DateTimeImmutable(\Safe\date('Y-m-d H:i:s', $values['created_at']));
+        $this->createdAt = DateTimeHelper::createDateTimeImmutableFromUnixTimestamp($values['created_at']);
     }
 
     public static function fromResponse(\stdClass $response): self
