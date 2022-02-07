@@ -12,7 +12,7 @@
     "require": {
         "php": ">=7.4",
         "intercom/intercom-php": "^4.4",
-        "oskarstark/trimmed-non-empty-string": "^0.1.1",
+        "oskarstark/trimmed-non-empty-string": "^0.2.0",
         "php-http/guzzle7-adapter": "^0.1.1",
         "symfony/http-foundation": "^4.4||^5.3||6.0",
         "thecodingmachine/safe": "^1.3 || ^2.0",
