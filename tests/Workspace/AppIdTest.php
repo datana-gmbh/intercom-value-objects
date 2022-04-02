@@ -73,7 +73,7 @@ final class AppIdTest extends TestCase
 
         self::assertSame(
             $value,
-            $hash->toString()
+            $hash->toString(),
         );
     }
 }

@@ -53,7 +53,7 @@ final class UserIdTest extends TestCase
 
         self::assertSame(
             $value,
-            $userId->toString()
+            $userId->toString(),
         );
     }
 }

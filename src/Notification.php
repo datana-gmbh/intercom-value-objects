@@ -50,7 +50,6 @@ use Webmozart\Assert\Assert;
 final class Notification
 {
     private array $value;
-
     private string $type;
     private string $topic;
     private string $id;

@@ -28,7 +28,7 @@ final class DateTimeHelperTest extends TestCase
     {
         self::assertSame(
             '2021-11-11 09:30:45',
-            DateTimeHelper::createDateTimeFromUnixTimestamp(1636619445)->format('Y-m-d H:i:s')
+            DateTimeHelper::createDateTimeFromUnixTimestamp(1636619445)->format('Y-m-d H:i:s'),
         );
     }
 }

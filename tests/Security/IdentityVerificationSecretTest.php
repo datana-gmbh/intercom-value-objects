@@ -67,7 +67,7 @@ final class IdentityVerificationSecretTest extends TestCase
 
         self::assertSame(
             $value,
-            $identityVerificationSecret->toString()
+            $identityVerificationSecret->toString(),
         );
     }
 }
