@@ -53,7 +53,7 @@ final class HashTest extends TestCase
 
         self::assertSame(
             $value,
-            $hash->toString()
+            $hash->toString(),
         );
     }
 }

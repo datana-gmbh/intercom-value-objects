@@ -33,7 +33,7 @@ final class UserHash
         $hash = Hash::fromString(hash_hmac(
             'sha256',
             $userId->toString(),
-            $secret->toString()
+            $secret->toString(),
         ));
 
         return new self($hash);

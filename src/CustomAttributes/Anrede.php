@@ -28,7 +28,7 @@ final class Anrede
             [
                 'Herr',
                 'Frau',
-            ]
+            ],
         );
 
         $this->value = $value;

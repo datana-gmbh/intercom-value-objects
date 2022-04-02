@@ -42,7 +42,7 @@ final class UserHashTest extends TestCase
         $expectedHash = hash_hmac(
             'sha256',
             $value,
-            $secret
+            $secret,
         );
 
         $userId = Attributes\UserId::fromString($value);
@@ -50,7 +50,7 @@ final class UserHashTest extends TestCase
 
         self::assertSame(
             $expectedHash,
-            Attributes\UserHash::forUserId($userId, $identityVerificationSecret)->toString()
+            Attributes\UserHash::forUserId($userId, $identityVerificationSecret)->toString(),
         );
     }
 }

@@ -34,7 +34,7 @@ final class Status
                 'abschluss_obsiegen',
                 'abschluss_unterliegen',
                 'abschluss_vergleich',
-            ]
+            ],
         );
 
         $this->value = $value;
