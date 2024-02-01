@@ -15,15 +15,15 @@
         "nyholm/psr7": "^1.8",
         "oskarstark/trimmed-non-empty-string": "^1.0",
         "php-http/message-factory": "^1.1",
-        "symfony/http-client": "^6.0",
-        "symfony/http-foundation": "^5.4||^6.0",
+        "symfony/http-client": "^6.0||^7.0",
+        "symfony/http-foundation": "^5.4||^6.0||^7.0",
         "thecodingmachine/safe": "^2.0",
         "webmozart/assert": "^1.9"
     },
     "require-dev": {
         "ergebnis/test-util": "^1.4",
         "phpunit/phpunit": "^9.0",
-        "symfony/string": "^5.1 || ^6.0"
+        "symfony/string": "^5.1 || ^6.0 || ^7.0"
     },
     "config": {
         "sort-packages": true,
